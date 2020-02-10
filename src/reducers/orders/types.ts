@@ -24,7 +24,7 @@ export interface Order {
   items: any[];
 }
 
-export interface OrdersReducer {``
+export interface OrdersReducer {
   orders: Order[];
   loading: boolean;
   hasLoaded: boolean;
