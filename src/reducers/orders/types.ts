@@ -1,4 +1,3 @@
-/*eslint-disable */
 export enum ActionTypes {
   setOrders = 'orders/setOrders',
   updateOrders = 'oders/updateOrds',
