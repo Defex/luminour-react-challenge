@@ -1,25 +1,12 @@
-import React, { useState } from "react";
-import { useAuthenticate, useGetUsers } from "../reducers/users/hooks";
-import {
-  Backdrop,
-  CircularProgress,
-  TextField,
-  Button,
-  Typography
-} from "@material-ui/core";
+import React, { useState } from 'react';
+import { useAuthenticate, useGetUsers } from '../reducers/users/hooks';
+import { Backdrop, CircularProgress, TextField, Button, Typography } from '@material-ui/core';
 
-const Authentication: React.FC<{ children: React.ReactNode }> = ({
-  children
-}) => {
+const Authentication: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   useGetUsers();
-  const {
-    authenticated,
-    authenticate,
-    errorMessage,
-    loading
-  } = useAuthenticate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const { authenticated, authenticate, errorMessage, loading } = useAuthenticate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const handleSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
     authenticate(username, password);

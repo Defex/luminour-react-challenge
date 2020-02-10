@@ -1,35 +1,35 @@
-import { ActionTypes, Book } from "./types";
-import { getBooks, postBooks, getBooksFromGoogle, putBooks, deleteBooks } from "./requests";
-import { AppThunk } from "../store";
-import { transformGoogleBookToApi } from "../helpers";
+import { ActionTypes, Book } from './types';
+import { getBooks, postBooks, getBooksFromGoogle, putBooks, deleteBooks } from './requests';
+import { AppThunk } from '../store';
+import { transformGoogleBookToApi } from '../helpers';
 
 export const setBooks = (books: Book[]) => ({
   type: ActionTypes.setBooks,
-  payload: { books }
+  payload: { books },
 });
 
 export const addBooks = (books: Book[]) => ({
   type: ActionTypes.addBooks,
-  payload: { books }
+  payload: { books },
 });
 
 export const updateBooks = (books: Book[]) => ({
   type: ActionTypes.updateBooks,
-  payload: { books }
+  payload: { books },
 });
 
 export const removeBooks = (books: Book[]) => ({
   type: ActionTypes.deleteBooks,
-  payload: { books }
+  payload: { books },
 });
 
 export const booksFetchStart = () => ({
-  type: ActionTypes.fetchStart
+  type: ActionTypes.fetchStart,
 });
 
 export const booksFetchEnd = (errorMessage?: string) => ({
   type: ActionTypes.fetchEnd,
-  payload: { errorMessage }
+  payload: { errorMessage },
 });
 
 export const apiBooksGet = (): AppThunk => async dispatch => {
@@ -38,10 +38,7 @@ export const apiBooksGet = (): AppThunk => async dispatch => {
     const books = await getBooks();
     if (books === null) {
       const googleBooks = await getBooksFromGoogle();
-      const transformedBooks =
-        (googleBooks &&
-          googleBooks.items.map(item => transformGoogleBookToApi(item))) ||
-        [];
+      const transformedBooks = (googleBooks && googleBooks.items.map(item => transformGoogleBookToApi(item))) || [];
       const createdBooks = await postBooks(transformedBooks);
       dispatch(setBooks(createdBooks));
     }

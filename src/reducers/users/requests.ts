@@ -1,11 +1,9 @@
-import { User } from "./types";
-import { timeout } from "../helpers";
+import { User } from './types';
+import { timeout } from '../helpers';
 
-const getUsersFromStorage = (): User[] | null =>
-  JSON.parse(localStorage.getItem("users") || 'null');
+const getUsersFromStorage = (): User[] | null => JSON.parse(localStorage.getItem('users') || 'null');
 
-const setUsersToStorage = (users: User[]) =>
-  localStorage.setItem("users", JSON.stringify(users));
+const setUsersToStorage = (users: User[]) => localStorage.setItem('users', JSON.stringify(users));
 
 export const getUsers = async (): Promise<User[] | null> => {
   await timeout(1000);
@@ -20,17 +18,12 @@ export const postUsers = async (users: User[]) => {
   return allUsers;
 };
 
-export const authenticate = async (
-  username: string,
-  password: string
-): Promise<User> => {
+export const authenticate = async (username: string, password: string): Promise<User> => {
   await timeout(1000);
   const savedUsers = getUsersFromStorage() || [];
-  const authenticatedUser = savedUsers.find(
-    user => user.username === username && user.password === password
-  );
+  const authenticatedUser = savedUsers.find(user => user.username === username && user.password === password);
   if (authenticatedUser) {
     return authenticatedUser;
   }
-  throw new Error("Incorrect credentials");
+  throw new Error('Incorrect credentials');
 };

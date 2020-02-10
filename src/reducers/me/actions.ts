@@ -1,10 +1,10 @@
-import { Me, ActionTypes } from "./types";
+import { Me, ActionTypes } from './types';
 
 export const setMe = (me: Me) => ({
   type: ActionTypes.set,
-  payload: { me }
+  payload: { me },
 });
 
 export const clearMe = () => ({
-  type: ActionTypes.clear
+  type: ActionTypes.clear,
 });

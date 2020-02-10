@@ -1,18 +1,15 @@
-import { ReducerAction } from "../store";
-import { ActionTypes, BooksReducer, Book } from "./types";
-import { replace } from "../helpers";
+import { ReducerAction } from '../store';
+import { ActionTypes, BooksReducer, Book } from './types';
+import { replace } from '../helpers';
 
 const initialState = {
   books: [],
   loading: false,
   hasLoaded: false,
-  errorMessage: ""
+  errorMessage: '',
 };
 
-const users = (
-  state = initialState as BooksReducer,
-  { type, payload }: ReducerAction
-): BooksReducer => {
+const users = (state = initialState as BooksReducer, { type, payload }: ReducerAction): BooksReducer => {
   switch (type) {
     case ActionTypes.setBooks: {
       console.log(payload);
@@ -27,9 +24,7 @@ const users = (
     case ActionTypes.deleteBooks: {
       return {
         ...state,
-        books: state.books.filter(({ id }) =>
-          !payload.books.find((book: Book) => book.id === id)
-        )
+        books: state.books.filter(({ id }) => !payload.books.find((book: Book) => book.id === id)),
       };
     }
     case ActionTypes.fetchStart:

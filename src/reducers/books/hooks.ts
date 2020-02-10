@@ -1,19 +1,17 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { RootReducer } from "../rootReducer";
-import { apiBooksGet, apiBooksDelete, apiBooksPost, apiBooksPut } from "./actions";
-import { Book } from "./types";
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootReducer } from '../rootReducer';
+import { apiBooksGet, apiBooksDelete, apiBooksPost, apiBooksPut } from './actions';
+import { Book } from './types';
 
 export const useGetBooks = (forceFetch?: boolean) => {
-  const [fetched, setFetched] = useState(!forceFetch)
+  const [fetched, setFetched] = useState(!forceFetch);
   const dispatch = useDispatch();
-  const { books, loading, hasLoaded, errorMessage } = useSelector(
-    (state: RootReducer) => state.books
-  );
+  const { books, loading, hasLoaded, errorMessage } = useSelector((state: RootReducer) => state.books);
 
   useEffect(() => {
     if ((!hasLoaded || !fetched) && !loading) {
-      setFetched(true)
+      setFetched(true);
       dispatch(apiBooksGet());
     }
   }, [hasLoaded, loading, forceFetch, dispatch, fetched]);
@@ -22,8 +20,8 @@ export const useGetBooks = (forceFetch?: boolean) => {
     books,
     loading,
     hasLoaded,
-    errorMessage
-  }
+    errorMessage,
+  };
 };
 
 export const useBookActions = () => {
@@ -32,5 +30,5 @@ export const useBookActions = () => {
     deleteBooks: (books: Book[]) => dispatch(apiBooksDelete(books)),
     addBooks: (books: Book[]) => dispatch(apiBooksPost(books)),
     updateBooks: (books: Book[]) => dispatch(apiBooksPut(books)),
-  }
-}
+  };
+};

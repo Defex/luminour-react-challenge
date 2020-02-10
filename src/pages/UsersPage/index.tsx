@@ -1,24 +1,15 @@
-import React from "react";
-import { useGetUsers, useAllowAdmin } from "../../reducers/users/hooks";
-import {
-  Table,
-  CircularProgress,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableBody,
-  Button
-} from "@material-ui/core";
-import { useHistory } from "react-router";
-import { pages } from "../../routes";
+import React from 'react';
+import { useGetUsers, useAllowAdmin } from '../../reducers/users/hooks';
+import { Table, CircularProgress, TableHead, TableRow, TableCell, TableBody, Button } from '@material-ui/core';
+import { useHistory } from 'react-router';
+import { pages } from '../../routes';
 
 const UsersPage = () => {
-  useAllowAdmin()
+  useAllowAdmin();
   const { users, loading } = useGetUsers();
   const { push } = useHistory();
 
-  const handleViewOrderClick = (userId: string) => () =>
-    push(pages["/users/:userId/orders"].href(userId));
+  const handleViewOrderClick = (userId: string) => () => push(pages['/users/:userId/orders'].href(userId));
   return (
     <div>
       {loading && <CircularProgress />}
@@ -41,9 +32,7 @@ const UsersPage = () => {
                 <TableCell>{user.surname}</TableCell>
                 <TableCell>{user.role}</TableCell>
                 <TableCell>
-                  <Button onClick={handleViewOrderClick(user.id)}>
-                    View Orders
-                  </Button>
+                  <Button onClick={handleViewOrderClick(user.id)}>View Orders</Button>
                 </TableCell>
               </TableRow>
             ))}

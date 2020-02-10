@@ -1,17 +1,14 @@
-import { ReducerAction } from "../store";
-import { ActionTypes, UsersReducer } from "./types";
+import { ReducerAction } from '../store';
+import { ActionTypes, UsersReducer } from './types';
 
 const initialState = {
   users: [],
   loading: false,
   hasLoaded: false,
-  errorMessage: ""
+  errorMessage: '',
 };
 
-const users = (
-  state = initialState as UsersReducer,
-  { type, payload }: ReducerAction
-): UsersReducer => {
+const users = (state = initialState as UsersReducer, { type, payload }: ReducerAction): UsersReducer => {
   switch (type) {
     case ActionTypes.setUsers: {
       return { ...state, users: payload.users };
@@ -24,9 +21,9 @@ const users = (
     case ActionTypes.fetchEnd:
       return {
         ...state,
-        errorMessage: (payload && payload.errorMessage) || "",
+        errorMessage: (payload && payload.errorMessage) || '',
         loading: false,
-        hasLoaded: true
+        hasLoaded: true,
       };
     default:
       return state;

@@ -1,13 +1,11 @@
-import React, { useState } from "react";
-import { TextField } from "@material-ui/core";
-import { Book } from "../reducers/books/types";
+import React, { useState } from 'react';
+import { TextField } from '@material-ui/core';
+import { Book } from '../reducers/books/types';
 
 const BookForm = ({ book, actions }: { book: Book; actions: Function }) => {
   const [title, setTitle] = useState(book.title);
   const [author, setAuthor] = useState(book.author);
-  const [published_date, setPublishedDate] = useState(
-    new Date(book.published_date).toISOString().split('T')[0]
-  );
+  const [published_date, setPublishedDate] = useState(new Date(book.published_date).toISOString().split('T')[0]);
   const [book_cover, setBookCover] = useState(book.book_cover);
   const [quantity, setQuantity] = useState(book.quantity);
 
@@ -18,14 +16,7 @@ const BookForm = ({ book, actions }: { book: Book; actions: Function }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <TextField
-          type="text"
-          value={book.id}
-          required
-          disabled
-          label="id"
-          fullWidth
-        />
+        <TextField type="text" value={book.id} required disabled label="id" fullWidth />
       </div>
       <div>
         <TextField
@@ -83,7 +74,7 @@ const BookForm = ({ book, actions }: { book: Book; actions: Function }) => {
         author,
         published_date,
         book_cover,
-        quantity
+        quantity,
       })}
     </form>
   );

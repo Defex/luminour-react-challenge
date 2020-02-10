@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
-import { uuid } from "uuidv4";
-import { User } from "../users/types";
-import { Item } from "../cart/types";
-import { apiOrderPost, apiGetOrdersByUser, apiPutOrders } from "./actions";
-import { orderStatuses, Order } from "./types";
-import { useMe } from "../me/hooks";
-import { RootReducer } from "../rootReducer";
-import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { uuid } from 'uuidv4';
+import { User } from '../users/types';
+import { Item } from '../cart/types';
+import { apiOrderPost, apiGetOrdersByUser, apiPutOrders } from './actions';
+import { orderStatuses, Order } from './types';
+import { useMe } from '../me/hooks';
+import { RootReducer } from '../rootReducer';
+import { useEffect, useState } from 'react';
 
 export const useOrders = () => {
   return useSelector((state: RootReducer) => state.orders);
@@ -24,17 +24,15 @@ export const useOrderActions = () => {
             id: user.id,
             name: user.name,
             surname: user.surname,
-            username: user.username
+            username: user.username,
           },
           status: orderStatuses.new,
-          items: cartItems
-        })
+          items: cartItems,
+        }),
       ),
-    confirmOrder: (order: Order) =>
-      dispatch(apiPutOrders([{ ...order, status: orderStatuses.paid }])),
-    cancelOrder: (order: Order) =>
-      dispatch(apiPutOrders([{ ...order, status: orderStatuses.canceled }])),
-    updateOrder: (order: Order) => dispatch(apiPutOrders([order]))
+    confirmOrder: (order: Order) => dispatch(apiPutOrders([{ ...order, status: orderStatuses.paid }])),
+    cancelOrder: (order: Order) => dispatch(apiPutOrders([{ ...order, status: orderStatuses.canceled }])),
+    updateOrder: (order: Order) => dispatch(apiPutOrders([order])),
   };
 };
 
@@ -51,18 +49,18 @@ export const useGetMyOrders = () => {
 
   return {
     ...orders,
-    loading: me.loading || orders.loading
+    loading: me.loading || orders.loading,
   };
 };
 
 export const useGetOrdersByUserId = (userId: string) => {
-  const [fetched, setFecthed] = useState(false)
+  const [fetched, setFecthed] = useState(false);
   const dispatch = useDispatch();
-  const { orders, loading, hasLoaded} = useSelector((state: RootReducer) => state.orders);
+  const { orders, loading, hasLoaded } = useSelector((state: RootReducer) => state.orders);
 
   useEffect(() => {
     if (userId && !fetched && !loading) {
-      setFecthed(true)
+      setFecthed(true);
       dispatch(apiGetOrdersByUser(userId));
     }
   }, [userId, loading, dispatch, fetched]);
@@ -70,7 +68,6 @@ export const useGetOrdersByUserId = (userId: string) => {
   return {
     orders,
     loading,
-    hasLoaded
-  }
+    hasLoaded,
+  };
 };
-

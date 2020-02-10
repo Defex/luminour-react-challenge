@@ -1,15 +1,15 @@
 export enum ActionTypes {
-  setUsers = "users/setUsers",
-  updateUsers = "users/updateUsers",
-  removeUsers = "users/removeUsers",
-  addUsers = "users/addUsers",
-  fetchStart = "users/fetchStart",
-  fetchEnd = "users/fetchEnd"
+  setUsers = 'users/setUsers',
+  updateUsers = 'users/updateUsers',
+  removeUsers = 'users/removeUsers',
+  addUsers = 'users/addUsers',
+  fetchStart = 'users/fetchStart',
+  fetchEnd = 'users/fetchEnd',
 }
 
 export enum UserRoles {
-  admin = "admin",
-  client = "client"
+  admin = 'admin',
+  client = 'client',
 }
 
 export interface User {
@@ -23,7 +23,7 @@ export interface User {
 
 export interface UsersReducer {
   users: User[];
-  loading: Boolean;
-  hasLoaded: Boolean;
+  loading: boolean;
+  hasLoaded: boolean;
   errorMessage: string | '';
 }

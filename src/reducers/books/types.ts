@@ -1,10 +1,10 @@
 export enum ActionTypes {
-  setBooks = "books/setBooks",
-  updateBooks = "books/updateBooks",
+  setBooks = 'books/setBooks',
+  updateBooks = 'books/updateBooks',
   addBooks = 'books/addBooks',
   deleteBooks = 'books/deleteBooks',
-  fetchStart = "books/fetchStart",
-  fetchEnd = "books/fetchEnd"
+  fetchStart = 'books/fetchStart',
+  fetchEnd = 'books/fetchEnd',
 }
 
 export interface Book {
@@ -18,7 +18,7 @@ export interface Book {
 
 export interface BooksReducer {
   books: Book[];
-  loading: Boolean;
-  hasLoaded: Boolean;
+  loading: boolean;
+  hasLoaded: boolean;
   errorMessage: string;
 }

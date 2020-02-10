@@ -1,14 +1,13 @@
-import React from "react";
-import BookForm from "./BookForm";
-import { Book } from "../reducers/books/types";
-import { useBookActions } from "../reducers/books/hooks";
-import { Grid, Button } from "@material-ui/core";
+import React from 'react';
+import BookForm from './BookForm';
+import { Book } from '../reducers/books/types';
+import { useBookActions } from '../reducers/books/hooks';
+import { Grid, Button } from '@material-ui/core';
 
 const BookEditForm = ({ book }: { book: Book }) => {
   const { updateBooks, deleteBooks } = useBookActions();
   const handleDeleteClick = () => deleteBooks([book]);
-  const handleUpdateClick = (updatedBook: Book) => () =>
-    updateBooks([updatedBook]);
+  const handleUpdateClick = (updatedBook: Book) => () => updateBooks([updatedBook]);
   return (
     <BookForm
       book={book}
@@ -17,11 +16,7 @@ const BookEditForm = ({ book }: { book: Book }) => {
           <Button type="button" onClick={handleDeleteClick} color="secondary">
             Delete
           </Button>
-          <Button
-            type="button"
-            onClick={handleUpdateClick(updatedBook)}
-            color="primary"
-          >
+          <Button type="button" onClick={handleUpdateClick(updatedBook)} color="primary">
             Save Changes
           </Button>
         </Grid>

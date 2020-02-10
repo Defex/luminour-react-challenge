@@ -1,15 +1,15 @@
 export enum ActionTypes {
-  setOrders = "orders/setOrders",
-  updateOrders = "oders/updateOrds",
-  fetchStart = "orders/fetchStart",
-  fetchEnd = "orders/fetchEnd"
+  setOrders = 'orders/setOrders',
+  updateOrders = 'oders/updateOrds',
+  fetchStart = 'orders/fetchStart',
+  fetchEnd = 'orders/fetchEnd',
 }
 
 export enum orderStatuses {
-  new = "new",
-  paid = "paid",
-  sent = "sent",
-  canceled = "canceled"
+  new = 'new',
+  paid = 'paid',
+  sent = 'sent',
+  canceled = 'canceled',
 }
 
 export interface Order {
@@ -26,6 +26,6 @@ export interface Order {
 
 export interface OrdersReducer {
   orders: Order[];
-  loading: Boolean;
-  hasLoaded: Boolean;
+  loading: boolean;
+  hasLoaded: boolean;
 }

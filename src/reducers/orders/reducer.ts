@@ -1,17 +1,14 @@
-import { ReducerAction } from "../store";
-import { OrdersReducer, ActionTypes } from "./types";
-import { replace } from "../helpers";
+import { ReducerAction } from '../store';
+import { OrdersReducer, ActionTypes } from './types';
+import { replace } from '../helpers';
 
 const initialState = {
   orders: [],
   loading: false,
-  hasLoaded: false
+  hasLoaded: false,
 };
 
-const reducer = (
-  state = initialState as OrdersReducer,
-  { type, payload }: ReducerAction
-): OrdersReducer => {
+const reducer = (state = initialState as OrdersReducer, { type, payload }: ReducerAction): OrdersReducer => {
   switch (type) {
     case ActionTypes.setOrders:
       return { ...state, orders: payload.orders };

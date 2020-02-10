@@ -1,22 +1,22 @@
-import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import { CircularProgress, Container, Toolbar } from "@material-ui/core";
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { CircularProgress, Container, Toolbar } from '@material-ui/core';
 
-import store, { persistor } from "./reducers/store";
+import store, { persistor } from './reducers/store';
 
-import Nav from "./components/Nav";
-import Authentication from "./pages/Authentication";
-import { PersistGate } from "redux-persist/integration/react";
+import Nav from './components/Nav';
+import Authentication from './pages/Authentication';
+import { PersistGate } from 'redux-persist/integration/react';
 
-const HomePage = lazy(() => import("./pages/HomePage"));
-const UsersPage = lazy(() => import("./pages/UsersPage"));
-const LogoutPage = lazy(() => import("./pages/Logout"));
-const MyOrders = lazy(() => import("./pages/MyOrders"));
-const OrderPage = lazy(() => import("./pages/OrderPage"));
-const UserOrders = lazy(() => import("./pages/UserOrders"));
-const AdminOrderPage = lazy(() => import("./pages/AdminOrderPage"));
-const AdminBookList = lazy(() => import("./pages/AdminBookList"));
+const HomePage = lazy(() => import('./pages/HomePage'));
+const UsersPage = lazy(() => import('./pages/UsersPage'));
+const LogoutPage = lazy(() => import('./pages/Logout'));
+const MyOrders = lazy(() => import('./pages/MyOrders'));
+const OrderPage = lazy(() => import('./pages/OrderPage'));
+const UserOrders = lazy(() => import('./pages/UserOrders'));
+const AdminOrderPage = lazy(() => import('./pages/AdminOrderPage'));
+const AdminBookList = lazy(() => import('./pages/AdminBookList'));
 
 const App = () => {
   return (

@@ -1,5 +1,5 @@
-import React from "react";
-import { useGetMyOrders, useOrderActions } from "../reducers/orders/hooks";
+import React from 'react';
+import { useGetMyOrders, useOrderActions } from '../reducers/orders/hooks';
 import {
   CircularProgress,
   TableHead,
@@ -8,11 +8,11 @@ import {
   Table,
   TableBody,
   Button,
-  Backdrop
-} from "@material-ui/core";
-import { orderStatuses, Order } from "../reducers/orders/types";
-import { useHistory } from "react-router";
-import { pages } from "../routes";
+  Backdrop,
+} from '@material-ui/core';
+import { orderStatuses, Order } from '../reducers/orders/types';
+import { useHistory } from 'react-router';
+import { pages } from '../routes';
 
 const MyOrders = () => {
   const { orders, loading, hasLoaded } = useGetMyOrders();
@@ -21,8 +21,7 @@ const MyOrders = () => {
 
   const handleConfirmOrderClick = (order: Order) => () => confirmOrder(order);
   const handleCancelOrderClick = (order: Order) => () => cancelOrder(order);
-  const handleEditAndViewClick = (order: Order) => () =>
-    push(pages["/my-orders/:orderId"].href(order.id));
+  const handleEditAndViewClick = (order: Order) => () => push(pages['/my-orders/:orderId'].href(order.id));
   return (
     <div>
       {loading && !hasLoaded && <CircularProgress />}
@@ -47,22 +46,10 @@ const MyOrders = () => {
                   <TableCell>{o.id}</TableCell>
                   <TableCell>{o.status}</TableCell>
                   <TableCell>
-                    {o.status === orderStatuses.new && (
-                      <Button onClick={handleConfirmOrderClick(o)}>
-                        Confirm
-                      </Button>
-                    )}
-                    {o.status === orderStatuses.new && (
-                      <Button onClick={handleCancelOrderClick(o)}>
-                        Cancel
-                      </Button>
-                    )}
-                    {o.status === orderStatuses.new && (
-                      <Button onClick={handleEditAndViewClick(o)}>Edit</Button>
-                    )}
-                    {o.status !== orderStatuses.new && (
-                      <Button onClick={handleEditAndViewClick(o)}>View</Button>
-                    )}
+                    {o.status === orderStatuses.new && <Button onClick={handleConfirmOrderClick(o)}>Confirm</Button>}
+                    {o.status === orderStatuses.new && <Button onClick={handleCancelOrderClick(o)}>Cancel</Button>}
+                    {o.status === orderStatuses.new && <Button onClick={handleEditAndViewClick(o)}>Edit</Button>}
+                    {o.status !== orderStatuses.new && <Button onClick={handleEditAndViewClick(o)}>View</Button>}
                   </TableCell>
                 </TableRow>
               ))}

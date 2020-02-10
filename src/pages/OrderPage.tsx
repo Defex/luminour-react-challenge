@@ -1,6 +1,6 @@
-import React from "react";
-import { useHistory, useParams } from "react-router";
-import { pages } from "../routes";
+import React from 'react';
+import { useHistory, useParams } from 'react-router';
+import { pages } from '../routes';
 import {
   Grid,
   Button,
@@ -9,14 +9,14 @@ import {
   ListItemText,
   Avatar,
   ListItemAvatar,
-  CircularProgress
-} from "@material-ui/core";
-import { useGetMyOrders, useOrderActions } from "../reducers/orders/hooks";
-import { Item } from "../reducers/cart/types";
-import { getAllowedOrdersStatusChanges } from "../reducers/helpers";
-import { useMe } from "../reducers/me/hooks";
-import { orderStatuses } from "../reducers/orders/types";
-import BookDrawer from "../components/BookDrawer";
+  CircularProgress,
+} from '@material-ui/core';
+import { useGetMyOrders, useOrderActions } from '../reducers/orders/hooks';
+import { Item } from '../reducers/cart/types';
+import { getAllowedOrdersStatusChanges } from '../reducers/helpers';
+import { useMe } from '../reducers/me/hooks';
+import { orderStatuses } from '../reducers/orders/types';
+import BookDrawer from '../components/BookDrawer';
 
 const OrderPage = () => {
   const { push } = useHistory();
@@ -25,28 +25,22 @@ const OrderPage = () => {
   const { updateOrder } = useOrderActions();
   const { me } = useMe();
 
-  const handleGoBack = () => push(pages["/my-orders"].href());
+  const handleGoBack = () => push(pages['/my-orders'].href());
 
   const order = orders.find(o => o.id === orderId);
   const allowedStatuses: any =
-    (me &&
-      me.role &&
-      order &&
-      getAllowedOrdersStatusChanges(me.role, order.status)) ||
-    false;
+    (me && me.role && order && getAllowedOrdersStatusChanges(me.role, order.status)) || false;
   const handleAddItem = (item: Item) => () => {
     if (order) {
       const exists = order && order.items.find(({ id }) => id === item.id);
       if (!!exists) {
         const _item = { ...exists, quantity: exists.quantity + 1 };
-        const _items = order.items.map(it =>
-          it.id === exists.id ? _item : it
-        );
+        const _items = order.items.map(it => (it.id === exists.id ? _item : it));
         return updateOrder({ ...order, items: _items });
       }
       return updateOrder({
         ...order,
-        items: [...order.items, { ...item, quantity: 1 }]
+        items: [...order.items, { ...item, quantity: 1 }],
       });
     }
   };
@@ -55,14 +49,12 @@ const OrderPage = () => {
       const exists = order && order.items.find(({ id }) => id === item.id);
       if (!!exists && exists.quantity > 1) {
         const _item = { ...exists, quantity: exists.quantity - 1 };
-        const _items = order.items.map(it =>
-          it.id === exists.id ? _item : it
-        );
+        const _items = order.items.map(it => (it.id === exists.id ? _item : it));
         return updateOrder({ ...order, items: _items });
       }
       return updateOrder({
         ...order,
-        items: order.items.filter(({ id }) => id !== item.id)
+        items: order.items.filter(({ id }) => id !== item.id),
       });
     }
   };
@@ -70,15 +62,13 @@ const OrderPage = () => {
     if (order) {
       return updateOrder({
         ...order,
-        items: order.items.filter(({ id }) => id !== item.id)
+        items: order.items.filter(({ id }) => id !== item.id),
       });
     }
   };
 
-  const handleConfirmClick = () =>
-    order && updateOrder({ ...order, status: orderStatuses.paid });
-  const handleCancelClick = () =>
-    order && updateOrder({ ...order, status: orderStatuses.canceled });
+  const handleConfirmClick = () => order && updateOrder({ ...order, status: orderStatuses.paid });
+  const handleCancelClick = () => order && updateOrder({ ...order, status: orderStatuses.canceled });
 
   return (
     <div>
@@ -96,37 +86,25 @@ const OrderPage = () => {
             <span>Order status:</span>
             <span>{order.status}</span>
           </div>
-          {order.status === orderStatuses.new && (
-            <BookDrawer handleAddToCartClick={handleAddItem} />
-          )}
+          {order.status === orderStatuses.new && <BookDrawer handleAddToCartClick={handleAddItem} />}
           <div>
             <div>Order Items</div>
             <List>
               {order.items.map(item => (
                 <ListItem key={`${item.id}`} divider>
                   <ListItemAvatar>
-                    <Avatar
-                      alt={item.title}
-                      src={item.book_cover}
-                      variant="square"
-                    />
+                    <Avatar alt={item.title} src={item.book_cover} variant="square" />
                   </ListItemAvatar>
                   <ListItemText primary={item.title} />
                   <ListItemText secondary={item.author} />
                   <ListItemText secondary={item.published_date} />
                   <div>
-                    {order.status === orderStatuses.new && (
-                      <Button onClick={handleRemoveItem(item)}>{`<`}</Button>
-                    )}
+                    {order.status === orderStatuses.new && <Button onClick={handleRemoveItem(item)}>{`<`}</Button>}
                     <span>{`Quantity: ${item.quantity}`}</span>
-                    {order.status === orderStatuses.new && (
-                      <Button onClick={handleAddItem(item)}>{`>`}</Button>
-                    )}
+                    {order.status === orderStatuses.new && <Button onClick={handleAddItem(item)}>{`>`}</Button>}
                   </div>
                   <div>
-                    {order.status === orderStatuses.new && (
-                      <Button onClick={handleRemove(item)}>Remove</Button>
-                    )}
+                    {order.status === orderStatuses.new && <Button onClick={handleRemove(item)}>Remove</Button>}
                   </div>
                 </ListItem>
               ))}

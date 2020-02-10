@@ -1,6 +1,6 @@
-import { UserRoles } from "./reducers/users/types";
+import { UserRoles } from './reducers/users/types';
 
-export interface pages {
+export interface Pages {
   [path: string]: {
     name: string;
     roles: string[];
@@ -9,49 +9,48 @@ export interface pages {
   };
 }
 
-export const pages: pages = {
-  "/": {
-    name: "Books",
+export const pages: Pages = {
+  '/': {
+    name: 'Books',
     roles: [UserRoles.admin, UserRoles.client],
-    href: () => "/"
+    href: () => '/',
   },
-  "/book-list": {
-    name: "Book List",
+  '/book-list': {
+    name: 'Book List',
     roles: [UserRoles.admin],
-    href: () => "/book-list"
+    href: () => '/book-list',
   },
-  "/my-orders": {
-    name: "My Orders",
+  '/my-orders': {
+    name: 'My Orders',
     roles: [UserRoles.client],
-    href: () => "/my-orders"
+    href: () => '/my-orders',
   },
-  "/my-orders/:orderId": {
-    name: "My Orders",
+  '/my-orders/:orderId': {
+    name: 'My Orders',
     roles: [UserRoles.client],
     noNav: true,
-    href: (orderId: string) => `/my-orders/${orderId}`
+    href: (orderId: string) => `/my-orders/${orderId}`,
   },
-  "/users": {
-    name: "User List",
+  '/users': {
+    name: 'User List',
     roles: [UserRoles.admin],
-    href: () => "/users"
+    href: () => '/users',
   },
-  "/users/:userId/orders": {
-    name: "My Orders",
+  '/users/:userId/orders': {
+    name: 'My Orders',
     roles: [UserRoles.admin, UserRoles.client],
     noNav: true,
-    href: (userId: string) => `/users/${userId}/orders`
+    href: (userId: string) => `/users/${userId}/orders`,
   },
-  "/users/:userId/orders/:orderId": {
-    name: "My Orders",
+  '/users/:userId/orders/:orderId': {
+    name: 'My Orders',
     roles: [UserRoles.admin, UserRoles.client],
     noNav: true,
-    href: (userId: string, orderId: string) =>
-      `/users/${userId}/orders/${orderId}`
+    href: (userId: string, orderId: string) => `/users/${userId}/orders/${orderId}`,
   },
-  "/logout": {
-    name: "Logout",
+  '/logout': {
+    name: 'Logout',
     roles: [UserRoles.admin, UserRoles.client],
-    href: () => "/logout"
-  }
+    href: () => '/logout',
+  },
 };

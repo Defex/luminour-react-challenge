@@ -1,11 +1,11 @@
-import { User } from "../users/types";
+import { User } from '../users/types';
 
 export enum ActionTypes {
-  set = "me/set",
-  clear = "me/clear"
+  set = 'me/set',
+  clear = 'me/clear',
 }
 
-export interface Me extends User {}
+export type Me = User;
 
 export interface MeReducer {
   me: Me | null;

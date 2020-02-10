@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useCartItems, useCartItemsActions } from "../reducers/cart/hooks";
-import { useMe } from "../reducers/me/hooks";
+import React, { useState } from 'react';
+import { useCartItems, useCartItemsActions } from '../reducers/cart/hooks';
+import { useMe } from '../reducers/me/hooks';
 import {
   Grid,
   Drawer,
@@ -10,20 +10,16 @@ import {
   ListItemText,
   Avatar,
   ListItemAvatar,
-  CircularProgress
-} from "@material-ui/core";
-import { Item } from "../reducers/cart/types";
-import { useOrderActions, useOrders } from "../reducers/orders/hooks";
+  CircularProgress,
+} from '@material-ui/core';
+import { Item } from '../reducers/cart/types';
+import { useOrderActions, useOrders } from '../reducers/orders/hooks';
 
 const Cart = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
   const { me } = useMe();
-  const { items } = useCartItems((me && me.id) || "");
-  const {
-    addOrIncreaseItem,
-    removeOrDecreaseItem,
-    removeItem
-  } = useCartItemsActions();
+  const { items } = useCartItems((me && me.id) || '');
+  const { addOrIncreaseItem, removeOrDecreaseItem, removeItem } = useCartItemsActions();
   const { loading } = useOrders();
 
   const { createOrder } = useOrderActions();
@@ -32,12 +28,9 @@ const Cart = () => {
 
   const handleOpenDrawer = () => total > 0 && setOpenDrawer(true);
   const handleCloseDrawer = () => setOpenDrawer(false);
-  const handleAddItem = (item: Item) => () =>
-    me && me.id && addOrIncreaseItem(me.id, item);
-  const handleRemoveItem = (item: Item) => () =>
-    me && me.id && removeOrDecreaseItem(me.id, item);
-  const handleRemove = (item: Item) => () =>
-    me && me.id && removeItem(me.id, item);
+  const handleAddItem = (item: Item) => () => me && me.id && addOrIncreaseItem(me.id, item);
+  const handleRemoveItem = (item: Item) => () => me && me.id && removeOrDecreaseItem(me.id, item);
+  const handleRemove = (item: Item) => () => me && me.id && removeItem(me.id, item);
   const handleCreateOrderClick = () => {
     if (me) {
       setOpenDrawer(false);
@@ -51,21 +44,14 @@ const Cart = () => {
   return (
     <Grid container justify="flex-end">
       {loading && <CircularProgress />}
-      <Button
-        disabled={!!loading || items.length === 0}
-        onClick={handleOpenDrawer}
-      >{`Cart: ${total}`}</Button>
+      <Button disabled={!!loading || items.length === 0} onClick={handleOpenDrawer}>{`Cart: ${total}`}</Button>
       <Drawer anchor="right" open={openDrawer} onClose={handleCloseDrawer}>
         <Grid container>
           <List>
             {items.map(item => (
               <ListItem key={`${item.id}`} divider>
                 <ListItemAvatar>
-                  <Avatar
-                    alt={item.title}
-                    src={item.book_cover}
-                    variant="square"
-                  />
+                  <Avatar alt={item.title} src={item.book_cover} variant="square" />
                 </ListItemAvatar>
                 <ListItemText primary={item.title} />
                 <div>
@@ -83,11 +69,7 @@ const Cart = () => {
 
         {items.length > 0 && (
           <Grid container justify="center">
-            <Button
-              onClick={handleCreateOrderClick}
-              variant="contained"
-              fullWidth={false}
-            >
+            <Button onClick={handleCreateOrderClick} variant="contained" fullWidth={false}>
               Create Order
             </Button>
           </Grid>

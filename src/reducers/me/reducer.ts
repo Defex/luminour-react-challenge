@@ -1,16 +1,13 @@
-import { ReducerAction } from "../store";
-import { MeReducer, ActionTypes } from "./types";
+import { ReducerAction } from '../store';
+import { MeReducer, ActionTypes } from './types';
 
 const initialState = {
   me: null,
   loading: false,
-  hasLoaded: false
+  hasLoaded: false,
 };
 
-const reducer = (
-  state = initialState as MeReducer,
-  { type, payload }: ReducerAction
-): MeReducer => {
+const reducer = (state = initialState as MeReducer, { type, payload }: ReducerAction): MeReducer => {
   switch (type) {
     case ActionTypes.set: {
       return { ...state, me: payload.me };

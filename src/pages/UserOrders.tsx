@@ -1,5 +1,5 @@
-import React from "react";
-import { useGetOrdersByUserId, useOrderActions } from "../reducers/orders/hooks";
+import React from 'react';
+import { useGetOrdersByUserId, useOrderActions } from '../reducers/orders/hooks';
 import {
   CircularProgress,
   TableHead,
@@ -8,16 +8,16 @@ import {
   Table,
   TableBody,
   Button,
-  Backdrop
-} from "@material-ui/core";
-import { orderStatuses, Order } from "../reducers/orders/types";
-import { useHistory, useParams } from "react-router";
-import { pages } from "../routes";
-import { useAllowAdmin } from "../reducers/users/hooks";
+  Backdrop,
+} from '@material-ui/core';
+import { orderStatuses, Order } from '../reducers/orders/types';
+import { useHistory, useParams } from 'react-router';
+import { pages } from '../routes';
+import { useAllowAdmin } from '../reducers/users/hooks';
 
 const UserOrders = () => {
-  useAllowAdmin()
-  const { userId } = useParams()
+  useAllowAdmin();
+  const { userId } = useParams();
   const { orders, loading, hasLoaded } = useGetOrdersByUserId(userId || '');
   const { confirmOrder, cancelOrder } = useOrderActions();
   const { push } = useHistory();
@@ -25,8 +25,8 @@ const UserOrders = () => {
   const handleConfirmOrderClick = (order: Order) => () => confirmOrder(order);
   const handleCancelOrderClick = (order: Order) => () => cancelOrder(order);
   const handleEditAndViewClick = (order: Order) => () =>
-    push(pages["/users/:userId/orders/:orderId"].href(userId, order.id));
-  const handleGoBackClick = () => push('/users')
+    push(pages['/users/:userId/orders/:orderId'].href(userId, order.id));
+  const handleGoBackClick = () => push('/users');
   return (
     <div>
       {loading && !hasLoaded && <CircularProgress />}
@@ -52,22 +52,10 @@ const UserOrders = () => {
                   <TableCell>{o.id}</TableCell>
                   <TableCell>{o.status}</TableCell>
                   <TableCell>
-                    {o.status === orderStatuses.new && (
-                      <Button onClick={handleConfirmOrderClick(o)}>
-                        Confirm
-                      </Button>
-                    )}
-                    {o.status === orderStatuses.new && (
-                      <Button onClick={handleCancelOrderClick(o)}>
-                        Cancel
-                      </Button>
-                    )}
-                    {o.status === orderStatuses.new && (
-                      <Button onClick={handleEditAndViewClick(o)}>Edit</Button>
-                    )}
-                    {o.status !== orderStatuses.new && (
-                      <Button onClick={handleEditAndViewClick(o)}>View</Button>
-                    )}
+                    {o.status === orderStatuses.new && <Button onClick={handleConfirmOrderClick(o)}>Confirm</Button>}
+                    {o.status === orderStatuses.new && <Button onClick={handleCancelOrderClick(o)}>Cancel</Button>}
+                    {o.status === orderStatuses.new && <Button onClick={handleEditAndViewClick(o)}>Edit</Button>}
+                    {o.status !== orderStatuses.new && <Button onClick={handleEditAndViewClick(o)}>View</Button>}
                   </TableCell>
                 </TableRow>
               ))}
