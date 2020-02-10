@@ -32,7 +32,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "react-scripts build",
-    "lint:fix": "eslint './src/**/*.{ts,tsx}'",
+    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
