@@ -37,7 +37,25 @@ _‘client’_ : can read full info about each book and add it to order; has acc
 - Use Git-flow for branches, create at least one tag for the main app release version, squash commits in pull request.
 
 
-
+## Initial Users
+```
+const  initialUsers  = [{
+  id:  '1',
+  name:  'Yagami',
+  surname:  'Light',
+  username:  'Kira',
+  password:  'DeathNode',
+  role:  UserRoles.admin,
+},
+{
+  id:  '2',
+  name:  'User',
+  surname:  'Some',
+  username:  'simple',
+  password:  '123',
+  role:  UserRoles.client,
+}];
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
