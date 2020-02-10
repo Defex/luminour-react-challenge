@@ -41,6 +41,10 @@ _‘client’_ : can read full info about each book and add it to order; has acc
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Log
+
+- 2020-02-10 Deadline was 4 days including the weekend, roughly 2 days of work required finish initial commit
+
 ## Available Scripts
 
 In the project directory, you can run:
