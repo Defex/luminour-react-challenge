@@ -1,3 +1,44 @@
+# Task
+
+## REACT & REDUX WEB APPLICATION
+- Create e-shop for books using **React** & **Redux**.
+- Each book has `**id**`, `**title**`, `**author**`, `**published_date**`, `**book_cover**`(image), `**quantity**`. Available books are listed in ‘Homepage’.
+- Web app has a users list with `**id**`, `**name**`, `**surname**`, `**username**`, `**password**`, `**role**`. There are 2 options for `role`:
+
+>_‘admin’_ : has access to users list; can see order `**status**` of _‘new’_ or _‘paid’_; can change order `**status**` to _‘sent’ or ‘canceled’_ in orders list; can edit book data in books list, provide all CRUD options.
+
+_‘client’_ : can read full info about each book and add it to order; has access to his order page where he can see books list, remove book, change books quantity, cancel or confirm (pay) order (paid orders can not be canceled/edited); can see his orders history.
+
+
+- Use TypeScript to write your code.
+
+- ESLint configuration with AirBnB’s linting rules must be used.
+
+- Use Material-UI framework ([https://material-ui.com/](https://material-ui.com/)), avoid inline or custom styles.
+
+- App data must be stored in local storage.
+
+- Use ‘async’ and ‘await’ when data is saved to local storage, delay saving method to 1000ms to simulate loading.
+
+- At least 5 books and 2 users (admin & client) must be created when the app is launched if local storage has not been seeded.
+
+- App variables must be used and stored in .env file.
+
+- Use Webpack and Babel to bundle and compile your app build, split the build output into chunks.
+
+- Implement ‘npm run build’ command for production output generation.
+
+- Implement ‘npm run dev’ command for development.
+
+- The output of the ‘npm run build’ command must be hosted and accessible from the internet.
+
+- Save project to GitHub with README file and instructions how to properly start the app.
+
+- Use Git-flow for branches, create at least one tag for the main app release version, squash commits in pull request.
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
