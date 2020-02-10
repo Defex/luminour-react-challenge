@@ -57,7 +57,7 @@
   },
   "lint-staged": {
     "./src/*.{js,jsx,ts,tsx}": [
-      "eslint .",
+      "eslint './src/**/*.{ts,tsx}'",
       "git add"
     ]
   },
