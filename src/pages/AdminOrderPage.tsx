@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import { useHistory, useParams } from 'react-router';
 import { pages } from '../routes';

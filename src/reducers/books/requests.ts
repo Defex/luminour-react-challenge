@@ -1,3 +1,4 @@
+/*eslint-disable */
 import { timeout, replace } from '../helpers';
 import { Book } from './types';
 

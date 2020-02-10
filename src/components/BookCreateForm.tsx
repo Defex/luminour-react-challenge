@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react';
 import BookForm from './BookForm';
 import { Book } from '../reducers/books/types';
@@ -32,3 +33,4 @@ const BookCreateForm = ({ initialFields }: { initialFields?: Book }) => {
 };
 
 export default BookCreateForm;
+/*eslint-enable */

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useAuthenticate, useGetUsers } from '../reducers/users/hooks';
 import { Backdrop, CircularProgress, TextField, Button, Typography } from '@material-ui/core';
 
-const Authentication: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+const Authentication = ({ children }: { children: React.ReactNode }) => {
   useGetUsers();
   const { authenticated, authenticate, errorMessage, loading } = useAuthenticate();
   const [username, setUsername] = useState('');

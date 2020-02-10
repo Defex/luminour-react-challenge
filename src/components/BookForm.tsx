@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { Book } from '../reducers/books/types';
@@ -81,3 +82,4 @@ const BookForm = ({ book, actions }: { book: Book; actions: Function }) => {
 };
 
 export default BookForm;
+/*eslint-enable */

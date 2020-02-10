@@ -3,6 +3,7 @@ import { Book } from './books/types';
 import { UserRoles } from './users/types';
 import { orderStatuses } from './orders/types';
 
+/*eslint-disable */
 export const timeout = (delay: number) => new Promise(resolve => setTimeout(resolve, delay));
 
 export const exists = (id: any, arr: any[]) => arr.find(v => v.id === id);
@@ -50,3 +51,4 @@ export const getAllowedOrdersStatusChanges = (userRole: UserRoles, orderStatus: 
   }
   return getClientAllowedOrdersStatusChanges(orderStatus);
 };
+/*eslint-enable */
