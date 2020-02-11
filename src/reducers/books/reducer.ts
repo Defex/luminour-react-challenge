@@ -12,7 +12,6 @@ const initialState = {
 const users = (state = initialState as BooksReducer, { type, payload }: ReducerAction): BooksReducer => {
   switch (type) {
     case ActionTypes.setBooks: {
-      console.log(payload);
       return { ...state, books: payload.books };
     }
     case ActionTypes.addBooks: {

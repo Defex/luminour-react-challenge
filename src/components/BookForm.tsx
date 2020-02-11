@@ -1,9 +1,9 @@
-/*eslint-disable */
 import React, { useState } from 'react';
 import { TextField } from '@material-ui/core';
 import { Book } from '../reducers/books/types';
 
 const BookForm = ({ book, actions }: { book: Book; actions: Function }) => {
+  /*eslint-disable */
   const [title, setTitle] = useState(book.title);
   const [author, setAuthor] = useState(book.author);
   const [published_date, setPublishedDate] = useState(new Date(book.published_date).toISOString().split('T')[0]);
@@ -50,6 +50,7 @@ const BookForm = ({ book, actions }: { book: Book; actions: Function }) => {
         />
       </div>
       <div>
+        <img src={book_cover} />
         <TextField
           type="text"
           value={book_cover}
@@ -82,4 +83,3 @@ const BookForm = ({ book, actions }: { book: Book; actions: Function }) => {
 };
 
 export default BookForm;
-/*eslint-enable */

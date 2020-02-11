@@ -1,7 +1,8 @@
-import { ActionTypes, Book } from './types';
-import { getBooks, postBooks, getBooksFromGoogle, putBooks, deleteBooks } from './requests';
+import { ActionTypes, Book, BookFormFields } from './types';
 import { AppThunk } from '../store';
-import { transformGoogleBookToApi } from '../helpers';
+import { getGoogleBooksToApi } from '../helpers';
+import { getBooks, createBook, updateBook, deleteBook } from './crud';
+import { Me } from '../me/types';
 
 export const setBooks = (books: Book[]) => ({
   type: ActionTypes.setBooks,
@@ -36,15 +37,27 @@ export const apiBooksGet = (): AppThunk => async dispatch => {
   dispatch(booksFetchStart());
   try {
     const books = await getBooks();
-    if (books === null) {
-      const googleBooks = await getBooksFromGoogle();
-      const transformedBooks = (googleBooks && googleBooks.items.map(item => transformGoogleBookToApi(item))) || [];
-      const createdBooks = await postBooks(transformedBooks);
-      dispatch(setBooks(createdBooks));
+    if (books.length === 0) {
+      const newBooks = await getGoogleBooksToApi();
+      const _books = await Promise.all(newBooks.map(async book => await createBook(book)));
+      dispatch(setBooks(_books));
+      return dispatch(booksFetchEnd());
     }
-    if (!!books) {
+    if (books.length > 0) {
       dispatch(setBooks(books));
+      dispatch(booksFetchEnd());
     }
+  } catch (e) {
+    console.log(e);
+    dispatch(booksFetchEnd(e.message));
+  }
+};
+
+export const apiBooksPost = (books: BookFormFields[]): AppThunk => async dispatch => {
+  dispatch(booksFetchStart());
+  try {
+    const _books = await Promise.all(books.map(async book => await createBook(book)));
+    dispatch(setBooks(_books));
     dispatch(booksFetchEnd());
   } catch (e) {
     console.log(e);
@@ -52,11 +65,11 @@ export const apiBooksGet = (): AppThunk => async dispatch => {
   }
 };
 
-export const apiBooksPost = (books: Book[]): AppThunk => async dispatch => {
+export const apiBooksPut = (me: Me, books: Book[]): AppThunk => async dispatch => {
   dispatch(booksFetchStart());
   try {
-    const createdBooks = await postBooks(books);
-    dispatch(addBooks(createdBooks));
+    const _books = await Promise.all(books.map(async book => await updateBook(me, book)));
+    dispatch(updateBooks(_books));
     dispatch(booksFetchEnd());
   } catch (e) {
     console.log(e);
@@ -64,23 +77,11 @@ export const apiBooksPost = (books: Book[]): AppThunk => async dispatch => {
   }
 };
 
-export const apiBooksPut = (books: Book[]): AppThunk => async dispatch => {
+export const apiBooksDelete = (me: Me, books: Book[]): AppThunk => async dispatch => {
   dispatch(booksFetchStart());
   try {
-    await putBooks(books);
-    dispatch(updateBooks(books));
-    dispatch(booksFetchEnd());
-  } catch (e) {
-    console.log(e);
-    dispatch(booksFetchEnd(e.message));
-  }
-};
-
-export const apiBooksDelete = (books: Book[]): AppThunk => async dispatch => {
-  dispatch(booksFetchStart());
-  try {
-    await deleteBooks(books);
-    dispatch(removeBooks(books));
+    const _books = await Promise.all(books.map(async book => await deleteBook(me, book.id)));
+    dispatch(removeBooks(_books));
     dispatch(booksFetchEnd());
   } catch (e) {
     console.log(e);

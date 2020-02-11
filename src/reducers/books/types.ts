@@ -8,12 +8,29 @@ export enum ActionTypes {
 }
 
 export interface Book {
-  id: string;
+  id?: string;
   title: string;
   author: string;
   published_date: string;
   book_cover: string;
   quantity: number;
+}
+
+export interface BookFormFields {
+  title: string;
+  author: string;
+  published_date: string;
+  book_cover: string;
+  quantity: number;
+}
+
+export interface Books {
+  [id: string]: Book;
+}
+
+export interface BooksStorage {
+  books: Books;
+  keys: Array<keyof Books>;
 }
 
 export interface BooksReducer {

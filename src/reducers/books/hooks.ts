@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootReducer } from '../rootReducer';
 import { apiBooksGet, apiBooksDelete, apiBooksPost, apiBooksPut } from './actions';
 import { Book } from './types';
+import { useMe } from '../me/hooks';
 
 export const useGetBooks = (forceFetch?: boolean) => {
   const [fetched, setFetched] = useState(!forceFetch);
@@ -26,9 +27,10 @@ export const useGetBooks = (forceFetch?: boolean) => {
 
 export const useBookActions = () => {
   const dispatch = useDispatch();
+  const { me } = useMe();
   return {
-    deleteBooks: (books: Book[]) => dispatch(apiBooksDelete(books)),
     addBooks: (books: Book[]) => dispatch(apiBooksPost(books)),
-    updateBooks: (books: Book[]) => dispatch(apiBooksPut(books)),
+    deleteBooks: (books: Book[]) => me && dispatch(apiBooksDelete(me, books)),
+    updateBooks: (books: Book[]) => me && dispatch(apiBooksPut(me, books)),
   };
 };
