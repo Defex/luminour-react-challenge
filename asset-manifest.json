@@ -2,8 +2,8 @@
   "files": {
     "static/js/0.36dd9fb9.chunk.js": "/luminour-react-challenge/static/js/0.36dd9fb9.chunk.js",
     "static/js/0.36dd9fb9.chunk.js.map": "/luminour-react-challenge/static/js/0.36dd9fb9.chunk.js.map",
-    "main.js": "/luminour-react-challenge/static/js/main.d80e9751.chunk.js",
-    "main.js.map": "/luminour-react-challenge/static/js/main.d80e9751.chunk.js.map",
+    "main.js": "/luminour-react-challenge/static/js/main.fe8ccd6a.chunk.js",
+    "main.js.map": "/luminour-react-challenge/static/js/main.fe8ccd6a.chunk.js.map",
     "runtime-main.js": "/luminour-react-challenge/static/js/runtime-main.21d41ef6.js",
     "runtime-main.js.map": "/luminour-react-challenge/static/js/runtime-main.21d41ef6.js.map",
     "static/js/3.7d77f313.chunk.js": "/luminour-react-challenge/static/js/3.7d77f313.chunk.js",
@@ -25,13 +25,13 @@
     "static/js/11.46d176a9.chunk.js": "/luminour-react-challenge/static/js/11.46d176a9.chunk.js",
     "static/js/11.46d176a9.chunk.js.map": "/luminour-react-challenge/static/js/11.46d176a9.chunk.js.map",
     "index.html": "/luminour-react-challenge/index.html",
-    "precache-manifest.eb63abc7b3d4c6c452000e6f2a6440b7.js": "/luminour-react-challenge/precache-manifest.eb63abc7b3d4c6c452000e6f2a6440b7.js",
+    "precache-manifest.e303c36d1775800c8a463631ae36e305.js": "/luminour-react-challenge/precache-manifest.e303c36d1775800c8a463631ae36e305.js",
     "service-worker.js": "/luminour-react-challenge/service-worker.js",
     "static/js/3.7d77f313.chunk.js.LICENSE.txt": "/luminour-react-challenge/static/js/3.7d77f313.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.21d41ef6.js",
     "static/js/3.7d77f313.chunk.js",
-    "static/js/main.d80e9751.chunk.js"
+    "static/js/main.fe8ccd6a.chunk.js"
   ]
 }

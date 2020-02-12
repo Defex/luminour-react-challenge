@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "50fd0127abcbbf80ae71c829bb6c72f6",
+    "revision": "2cd5b87a905419ba3165891bb8696262",
     "url": "/luminour-react-challenge/index.html"
   },
   {
@@ -48,8 +48,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/luminour-react-challenge/static/js/9.7ea660c1.chunk.js"
   },
   {
-    "revision": "5d13a352368625cf22b8",
-    "url": "/luminour-react-challenge/static/js/main.d80e9751.chunk.js"
+    "revision": "8234c95a93add302c60d",
+    "url": "/luminour-react-challenge/static/js/main.fe8ccd6a.chunk.js"
   },
   {
     "revision": "29d9ef5291ba2a83d48f",
