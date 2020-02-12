@@ -20,7 +20,7 @@ export const getBooksFromGoogle = async (): Promise<{ items: any[] }> => {
 
 export const transformGoogleBookToApi = (book: any): BookFormFields => ({
   title: book.volumeInfo && book.volumeInfo.title,
-  author: (book.volumeInfo && book.volumeInfo.authors && book.volumeInfo.authors.join(', ')) || 'Unknown Author',
+  author: (book.volumeInfo && book.volumeInfo.authors && book.volumeInfo.authors[0]) || 'Unknown Author',
   published_date: (book.volumeInfo && book.volumeInfo.publishedDate) || new Date().toISOString().split('T'),
   book_cover:
     (book.volumeInfo && book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.thumbnail) ||

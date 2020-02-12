@@ -1,12 +1,5 @@
-import React from "react";
-import {
-  Card,
-  CardContent,
-  Typography,
-  CardMedia,
-  Button,
-  Grid
-} from "@material-ui/core";
+import React from 'react';
+import { Card, CardContent, Typography, CardMedia, Button, Grid } from '@material-ui/core';
 
 const Book = ({ book, handleClick }) => {
   const { id, title, author, published_date, book_cover, quantity } = book;
@@ -15,17 +8,13 @@ const Book = ({ book, handleClick }) => {
       <Card raised>
         <Grid container spacing={1} direction="row" justify="center" alignItems="center">
           <Grid item xs={4} sm={3}>
-            <CardMedia
-              image={book_cover}
-              component="img"
-              title={`${title} image`}
-            />
+            <CardMedia image={book_cover} component="img" title={`${title} image`} />
           </Grid>
 
           <Grid item xs={8}>
             <CardContent>
               <Grid container direction="column" wrap="nowrap">
-                <Typography component="h6" variant="h6">
+                <Typography noWrap component="h6" variant="h6">
                   {title}
                 </Typography>
                 <Typography noWrap variant="subtitle2" color="textSecondary">
