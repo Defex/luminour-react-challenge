@@ -138,10 +138,9 @@ export const crud = <ItemType extends BaseItem>(storageKey: string) => {
     await timeout(1000);
     const { keys, items } = storage.get();
     const _items = newItems.map(item => ({ ...item, id: uuid() }));
-
     const _newItems = _items.reduce((acc, item) => ({ ...acc, [item.id]: item }), {});
     const _itemsStorage = {
-      keys: [...keys, ...Object.keys(_items)],
+      keys: [...keys, ...Object.keys(_newItems)],
       items: { ...items, ..._newItems },
     };
     storage.set(_itemsStorage);
@@ -162,6 +161,22 @@ export const crud = <ItemType extends BaseItem>(storageKey: string) => {
     throw new Error('Item does not exist');
   };
 
+  const updateItems = async (updatedItems: ItemType[]): Promise<ItemType[]> => {
+    await timeout(1000);
+    const { keys, items } = storage.get();
+
+    const _items = updatedItems.reduce((acc, item) => ({ ...acc, [item.id || '']: item }), {});
+
+    const _itemsStorage = {
+      keys,
+      items: { ...items, ..._items },
+    };
+
+    storage.set(_itemsStorage);
+
+    return updatedItems;
+  };
+
   const deleteItem = async (bookId: string): Promise<ItemType> => {
     await timeout(1000);
     const { keys, items } = storage.get();
@@ -177,10 +192,31 @@ export const crud = <ItemType extends BaseItem>(storageKey: string) => {
     throw new Error('Item does not exist');
   };
 
+  const deleteItems = async (ids: string[]): Promise<ItemType[]> => {
+    await timeout(1000);
+    const { keys, items } = storage.get();
+
+    const deletedItems = ids.map(id => items[id]);
+    const _keys = keys.filter(k => !ids.includes(k));
+    const _items = _keys.reduce((acc, k) => ({ ...acc, [k]: items[k] }), {});
+
+    const _itemsStorage = {
+      keys,
+      items: _items,
+    };
+
+    storage.set(_itemsStorage);
+
+    return deletedItems;
+  };
+
   return {
     getItems,
     createItem,
+    createItems,
     updateItem,
+    updateItems,
     deleteItem,
+    deleteItems,
   };
 };

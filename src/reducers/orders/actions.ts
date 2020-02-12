@@ -1,6 +1,6 @@
 import { Order, ActionTypes } from './types';
 import { AppThunk } from '../store';
-import { getOrders, postOrders, getOrdersByUser, putOrders } from './requests';
+import { getOrders, postOrders, getOrdersByUser, putOrders } from './crud';
 import { apiSetCart } from '../cart/actions';
 
 export const setOrders = (orders: Order[]) => ({

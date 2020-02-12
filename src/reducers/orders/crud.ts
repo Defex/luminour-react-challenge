@@ -1,12 +1,15 @@
 import { Order } from './types';
 import { crud } from '../helpers';
 
-const { getItems, createItem, updateItem, deleteItem } = crud<Order>('orders');
+const { getItems, createItems, updateItems } = crud<Order>('orders');
 
-export { getItems as getOrders };
+export const getOrders = getItems;
 
-export const createOrder = createItem;
+export const postOrders = createItems;
 
-export const updateOrder = updateItem;
+export const putOrders = updateItems;
 
-export const deleteOrder = deleteItem;
+export const getOrdersByUser = async (userId: string): Promise<Order[]> => {
+  const allOrders = await getOrders();
+  return allOrders.filter(o => o.buyer.id === userId);
+};

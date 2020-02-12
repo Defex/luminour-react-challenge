@@ -1,12 +1,12 @@
 import { Book } from './types';
 import { requiredAdmin, crud } from '../helpers';
 
-const { getItems, createItem, updateItem, deleteItem } = crud<Book>('books');
+const { getItems, createItems, updateItems, deleteItems } = crud<Book>('books');
 
 export { getItems as getBooks };
 
-export const createBook = createItem;
+export const postBooks = createItems;
 
-export const updateBook = requiredAdmin(updateItem);
+export const putBooks = requiredAdmin(updateItems);
 
-export const deleteBook = requiredAdmin(deleteItem);
+export const deleteBooks = requiredAdmin(deleteItems);

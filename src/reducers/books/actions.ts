@@ -1,7 +1,7 @@
-import { ActionTypes, Book, BookFormFields } from './types';
+import { ActionTypes, Book } from './types';
 import { AppThunk } from '../store';
 import { getGoogleBooksToApi } from '../helpers';
-import { getBooks, createBook, updateBook, deleteBook } from './crud';
+import { getBooks, putBooks, deleteBooks, postBooks } from './crud';
 import { Me } from '../me/types';
 
 export const setBooks = (books: Book[]) => ({
@@ -39,7 +39,7 @@ export const apiBooksGet = (): AppThunk => async dispatch => {
     const books = await getBooks();
     if (books.length === 0) {
       const newBooks = await getGoogleBooksToApi();
-      const _books = await Promise.all(newBooks.map(async book => await createBook(book)));
+      const _books = await postBooks(newBooks);
       dispatch(setBooks(_books));
       return dispatch(booksFetchEnd());
     }
@@ -53,10 +53,10 @@ export const apiBooksGet = (): AppThunk => async dispatch => {
   }
 };
 
-export const apiBooksPost = (books: BookFormFields[]): AppThunk => async dispatch => {
+export const apiBooksPost = (books: Book[]): AppThunk => async dispatch => {
   dispatch(booksFetchStart());
   try {
-    const _books = await Promise.all(books.map(async book => await createBook(book)));
+    const _books = await postBooks(books);
     dispatch(setBooks(_books));
     dispatch(booksFetchEnd());
   } catch (e) {
@@ -68,7 +68,7 @@ export const apiBooksPost = (books: BookFormFields[]): AppThunk => async dispatc
 export const apiBooksPut = (me: Me, books: Book[]): AppThunk => async dispatch => {
   dispatch(booksFetchStart());
   try {
-    const _books = await Promise.all(books.map(async book => await updateBook(me, book)));
+    const _books = await putBooks(me, books);
     dispatch(updateBooks(_books));
     dispatch(booksFetchEnd());
   } catch (e) {
@@ -80,7 +80,10 @@ export const apiBooksPut = (me: Me, books: Book[]): AppThunk => async dispatch =
 export const apiBooksDelete = (me: Me, books: Book[]): AppThunk => async dispatch => {
   dispatch(booksFetchStart());
   try {
-    const _books = await Promise.all(books.map(async book => await deleteBook(me, book.id)));
+    const _books = await deleteBooks(
+      me,
+      books.map(({ id }) => id),
+    );
     dispatch(removeBooks(_books));
     dispatch(booksFetchEnd());
   } catch (e) {

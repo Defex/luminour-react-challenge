@@ -1,6 +1,6 @@
 import { User, ActionTypes, UserRoles } from './types';
 import { AppThunk } from '../store';
-import { getUsers, postUsers, authenticate } from './requests';
+import { getUsers, postUsers, authenticate } from './crud';
 import { setMe } from '../me/actions';
 
 const initialUsers = [
@@ -55,7 +55,7 @@ export const apiGetUsers = (): AppThunk => async dispatch => {
   dispatch(fetchStart());
   try {
     const users = await getUsers();
-    if (users === null) {
+    if (users.length === 0) {
       const createdUsers = await postUsers(initialUsers);
       dispatch(setUsers(createdUsers));
     }
