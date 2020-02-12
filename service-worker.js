@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/luminour-react-challenge/precache-manifest.8fe2272d44cbf29acccb3d0747219b41.js"
+  "/luminour-react-challenge/precache-manifest.eb63abc7b3d4c6c452000e6f2a6440b7.js"
 );
 
 self.addEventListener('message', (event) => {

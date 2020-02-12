@@ -1,2 +1,0 @@
-(this["webpackJsonpluminour-react-challenge"]=this["webpackJsonpluminour-react-challenge"]||[]).push([[11],{173:function(e,n,t){"use strict";t.r(n);var a=t(0),c=t.n(a),u=t(135),l=t(49);n.default=function(){return Object(l.a)(),c.a.createElement(u.a,null)}}}]);
-//# sourceMappingURL=11.e6c15bef.chunk.js.map
