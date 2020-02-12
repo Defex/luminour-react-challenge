@@ -23,7 +23,7 @@ const App = () => {
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Container>
-          <Router>
+          <Router basename="/luminour-react-challenge">
             <Authentication>
               <Nav />
               <Toolbar />
