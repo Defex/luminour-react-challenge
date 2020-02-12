@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2cd5b87a905419ba3165891bb8696262",
+    "revision": "e3ae9cb7f18aaba4b2a1554cd004f470",
     "url": "/luminour-react-challenge/index.html"
   },
   {
@@ -44,15 +44,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/luminour-react-challenge/static/js/8.fa467ec7.chunk.js"
   },
   {
-    "revision": "c13d2f96c249b8ad1b63",
-    "url": "/luminour-react-challenge/static/js/9.7ea660c1.chunk.js"
+    "revision": "ecd04a70432eb5d0979c",
+    "url": "/luminour-react-challenge/static/js/9.8f8c3f78.chunk.js"
   },
   {
-    "revision": "8234c95a93add302c60d",
-    "url": "/luminour-react-challenge/static/js/main.fe8ccd6a.chunk.js"
+    "revision": "f1fc622be4d2104ec352",
+    "url": "/luminour-react-challenge/static/js/main.b0d1cb3f.chunk.js"
   },
   {
-    "revision": "29d9ef5291ba2a83d48f",
-    "url": "/luminour-react-challenge/static/js/runtime-main.21d41ef6.js"
+    "revision": "da82548bd8c6e600ac88",
+    "url": "/luminour-react-challenge/static/js/runtime-main.03a1f56a.js"
   }
 ]);
